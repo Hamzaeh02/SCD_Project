@@ -7,6 +7,9 @@ SCD Project Usecases
 3.food preparation/track(hamza)
    user can track the status of thier order
 
-
+ project discription
+ orderfood
+ in this project i am creating the detailing about the customer and billing process 
+ 
 
 

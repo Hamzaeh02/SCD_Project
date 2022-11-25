@@ -6,6 +6,13 @@ SCD Project Usecases
    user can confrim their order by giving details and check the bill.
 3.food preparation/track(hamza)
    user can track the status of thier order
+   
+   Hamza Project Description:
+   In this project i will be working on 2 phases one is menu/addtocart and the other one is food preparation/track.
+   
+   
+   
+   
 
 
 

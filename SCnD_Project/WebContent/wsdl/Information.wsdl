@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://main" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://main" xmlns:intf="http://main" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://main" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getOrderItems">
+    <complexType>
+     <sequence>
+      <element name="orderID" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getOrderItemsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getOrderItemsReturn" type="impl:ItemDetails"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ItemDetails">
+    <sequence>
+     <element name="itemName" nillable="true" type="xsd:string"/>
+     <element name="quantity" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <element name="getOrderDetails">
+    <complexType>
+     <sequence>
+      <element name="orderID" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getOrderDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="getOrderDetailsReturn" type="impl:OrderDetails"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="OrderDetails">
+    <sequence>
+     <element name="customerName" nillable="true" type="xsd:string"/>
+     <element name="phoneNumber" type="xsd:int"/>
+     <element name="address" nillable="true" type="xsd:string"/>
+     <element name="paymentMethod" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getOrderDetailsRequest">
+
+      <wsdl:part element="impl:getOrderDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getOrderDetailsResponse">
+
+      <wsdl:part element="impl:getOrderDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getOrderItemsResponse">
+
+      <wsdl:part element="impl:getOrderItemsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getOrderItemsRequest">
+
+      <wsdl:part element="impl:getOrderItems" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Information">
+
+      <wsdl:operation name="getOrderItems">
+
+         <wsdl:input message="impl:getOrderItemsRequest" name="getOrderItemsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getOrderItemsResponse" name="getOrderItemsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getOrderDetails">
+
+         <wsdl:input message="impl:getOrderDetailsRequest" name="getOrderDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getOrderDetailsResponse" name="getOrderDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="InformationSoapBinding" type="impl:Information">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getOrderItems">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getOrderItemsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getOrderItemsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getOrderDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getOrderDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getOrderDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="InformationService">
+
+      <wsdl:port binding="impl:InformationSoapBinding" name="Information">
+
+         <wsdlsoap:address location="http://localhost:8080/SCnD_Project/services/Information"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

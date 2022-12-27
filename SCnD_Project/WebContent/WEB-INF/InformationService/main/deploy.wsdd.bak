@@ -1,0 +1,48 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from InformationService WSDL service -->
+
+  <service name="Information" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://main"/>
+      <parameter name="wsdlServiceElement" value="InformationService"/>
+      <parameter name="schemaQualified" value="http://main"/>
+      <parameter name="wsdlServicePort" value="Information"/>
+      <parameter name="className" value="main.InformationSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="Information"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getOrderItems" qname="operNS:getOrderItems" xmlns:operNS="http://main" returnQName="retNS:getOrderItemsReturn" xmlns:retNS="http://main" returnType="rtns:ItemDetails" xmlns:rtns="http://main" soapAction="" >
+        <parameter qname="pns:orderID" xmlns:pns="http://main" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getOrderDetails" qname="operNS:getOrderDetails" xmlns:operNS="http://main" returnQName="retNS:getOrderDetailsReturn" xmlns:retNS="http://main" returnType="rtns:OrderDetails" xmlns:rtns="http://main" soapAction="" >
+        <parameter qname="pns:orderID" xmlns:pns="http://main" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="getOrderDetails getOrderItems"/>
+
+      <typeMapping
+        xmlns:ns="http://main"
+        qname="ns:OrderDetails"
+        type="java:main.OrderDetails"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://main"
+        qname="ns:ItemDetails"
+        type="java:main.ItemDetails"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

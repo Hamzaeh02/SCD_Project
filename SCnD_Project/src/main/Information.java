@@ -30,6 +30,42 @@ public class Information {
 	 
 	 return orderDetails;
  }
-	
+	public ItemDetails[] getOrderItems(int orderID)
+ {
+	 ItemDetails[] itemDetails = null;
+	 
+	 try{
+		 Class.forName("com.mysql.jdbc.Driver");
+		 Connection con =
+		 DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","");
+		 Statement stmt=con.createStatement();
+		 ResultSet rs=stmt.executeQuery("SELECT items.name,order_item_list.quantity FROM `order_item_list`,items WHERE order_item_list.item_id=items.id and order_item_list.Order_id=" + orderID + ";");
+
+		 rs.last();
+		 int size = rs.getRow();
+		 rs.beforeFirst();
+		 
+		 itemDetails = new ItemDetails[size];
+		 
+		 int i = 0;
+		 
+		 while(rs.next())
+		 {
+			 itemDetails[i] = new ItemDetails();
+					 
+			 itemDetails[i].itemName = rs.getString(1);
+			 itemDetails[i].quantity = rs.getInt(2);
+			 
+			 i++;
+		 }
+		 
+		 con.close();
+		 } catch(Exception e)
+		 {
+		 System.out.println(e);
+		 }
+	 return itemDetails;
+ }
 }
+
 

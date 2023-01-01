@@ -66,32 +66,33 @@ public class Information {
 		 }
 	 return itemDetails;
  }
-	public VehicalDetails getVehicalDetails(int vehicalID)
- {
-	 VehicalDetails vehicalDetails = new VehicalDetails();
-	 
-	 try{
-		 Class.forName("com.mysql.jdbc.Driver");
-		 Connection con =
-		 DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","");
-		 Statement stmt=con.createStatement();
-		 ResultSet rs=stmt.executeQuery("SELECT  rider.Name, rider.Phone_no, rider.Address,ridervehical.payment_status FROM `ridervehical`,rider WHERE ridervehical.rider_id=rider.id and ridervehical.vehical_id=" + vehicalID + ";");
-
-		 rs.next();
+	public DeliveryDetails getDeliveryDetails(int OrderID)
+	 {
+		DeliveryDetails deliveryDetails = new DeliveryDetails();
 		 
-		 vehicalDetails.riderName = rs.getString(1);
-		 vehicalDetails.phoneNumber = rs.getInt(2);
-		 vehicalDetails.address = rs.getString(3);
-		 vehicalDetails.paymentstatus = rs.getString(4);
+		 try{
+			 Class.forName("com.mysql.jdbc.Driver");
+			 Connection con =
+			 DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","");
+			 Statement stmt=con.createStatement();
+			 String Query = "SELECT rider.Name, rider.Phone_no,rider.vehicalid,delivery.Rider_id FROM `delivery`,rider WHERE delivery.Rider_id=rider.id and delivery.Order_id=" + OrderID + ";";
+			 System.out.println(Query);
+			 ResultSet rs=stmt.executeQuery(Query);
 
-		 con.close();
-		 } catch(Exception e)
-		 {
-		 System.out.println(e);
-		 }
-	 
-	 return vehicalDetails;
- }
+			 rs.next();
+			 
+			 deliveryDetails.riderName = rs.getString(1);
+			 deliveryDetails.phoneNumber = rs.getLong(2);
+			 deliveryDetails.vehicalid = rs.getString(3);
+			 deliveryDetails.riderid = rs.getInt(4);
+			 
+
+			 con.close();
+			 } catch(Exception e)
+			 {
+			 System.out.println(e);
+			 }
+		 
+		 return deliveryDetails;
+	 }
 }
-
-

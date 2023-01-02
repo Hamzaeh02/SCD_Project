@@ -1,0 +1,8 @@
+SCD Project Usecases
+
+1.menu/addtocart(hamza)
+   user can select item from the menubar and add it to the cart and user can update,delete and increase the quantity of items.
+2.orderfood(sahar)
+   user can confrim their order by giving details and check the bill.
+3.food preparation/track(hamza)
+   user can track the status of thier order

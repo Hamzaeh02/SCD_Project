@@ -39,7 +39,10 @@
   <ns1:operation name="getOrderDetails" qname="ns2:getOrderDetails" returnQName="ns2:getOrderDetailsReturn" returnType="ns2:OrderDetails" soapAction="" xmlns:ns2="http://main">
    <ns1:parameter qname="ns2:orderID" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="getOrderDetails getOrderItems"/>
+  <ns1:operation name="getDeliveryDetails" qname="ns3:getDeliveryDetails" returnQName="ns3:getDeliveryDetailsReturn" returnType="ns3:DeliveryDetails" soapAction="" xmlns:ns3="http://main">
+   <ns1:parameter qname="ns3:OrderID" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getDeliveryDetails getOrderDetails getOrderItems"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="Information"/>
   <ns1:parameter name="className" value="main.Information"/>
@@ -47,8 +50,9 @@
   <ns1:parameter name="schemaQualified" value="http://main"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
   <ns1:parameter name="wsdlServiceElement" value="InformationService"/>
-  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns3:OrderDetails" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:main.OrderDetails" xmlns:ns3="http://main"/>
-  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns4:ItemDetails" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:main.ItemDetails" xmlns:ns4="http://main"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns4:DeliveryDetails" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:main.DeliveryDetails" xmlns:ns4="http://main"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns5:OrderDetails" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:main.OrderDetails" xmlns:ns5="http://main"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns6:ItemDetails" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:main.ItemDetails" xmlns:ns6="http://main"/>
  </ns1:service>
  <ns1:transport name="http">
   <ns1:requestFlow>

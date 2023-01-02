@@ -16,8 +16,12 @@
       <operation xmlns:operNS="http://main" xmlns:retNS="http://main" xmlns:rtns="http://main" name="getOrderDetails" qname="operNS:getOrderDetails" returnQName="retNS:getOrderDetailsReturn" returnType="rtns:OrderDetails" soapAction="">
         <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:orderID" type="tns:int"/>
       </operation>
-      <parameter name="allowedMethods" value="getOrderDetails getOrderItems"/>
+      <operation xmlns:operNS="http://main" xmlns:retNS="http://main" xmlns:rtns="http://main" name="getDeliveryDetails" qname="operNS:getDeliveryDetails" returnQName="retNS:getDeliveryDetailsReturn" returnType="rtns:DeliveryDetails" soapAction="">
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:OrderID" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="getDeliveryDetails getOrderDetails getOrderItems"/>
 
+      <typeMapping xmlns:ns="http://main" qname="ns:DeliveryDetails" type="java:main.DeliveryDetails" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
       <typeMapping xmlns:ns="http://main" qname="ns:OrderDetails" type="java:main.OrderDetails" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
       <typeMapping xmlns:ns="http://main" qname="ns:ItemDetails" type="java:main.ItemDetails" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
   </service>

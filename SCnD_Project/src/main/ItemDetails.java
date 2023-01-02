@@ -1,6 +1,10 @@
 package main;
 
 public class ItemDetails {
-	public String itemName;
-	public int quantity;
+
+		public String itemName;
+		public int quantity;
+		
+		
+
 }

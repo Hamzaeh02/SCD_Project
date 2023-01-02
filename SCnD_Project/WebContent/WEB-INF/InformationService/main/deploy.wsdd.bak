@@ -26,8 +26,19 @@
       <operation name="getOrderDetails" qname="operNS:getOrderDetails" xmlns:operNS="http://main" returnQName="retNS:getOrderDetailsReturn" xmlns:retNS="http://main" returnType="rtns:OrderDetails" xmlns:rtns="http://main" soapAction="" >
         <parameter qname="pns:orderID" xmlns:pns="http://main" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <parameter name="allowedMethods" value="getOrderDetails getOrderItems"/>
+      <operation name="getDeliveryDetails" qname="operNS:getDeliveryDetails" xmlns:operNS="http://main" returnQName="retNS:getDeliveryDetailsReturn" xmlns:retNS="http://main" returnType="rtns:DeliveryDetails" xmlns:rtns="http://main" soapAction="" >
+        <parameter qname="pns:OrderID" xmlns:pns="http://main" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="getDeliveryDetails getOrderDetails getOrderItems"/>
 
+      <typeMapping
+        xmlns:ns="http://main"
+        qname="ns:DeliveryDetails"
+        type="java:main.DeliveryDetails"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
       <typeMapping
         xmlns:ns="http://main"
         qname="ns:OrderDetails"
